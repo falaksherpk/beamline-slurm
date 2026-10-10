@@ -1,0 +1,16 @@
+# Upstream source for the Slurm packages built here (handbook Part 2, Ch18).
+# The build script reads only SHA256SUMS; this file records where the tarball comes
+# from and why its hash is trusted.
+version: 26.05.4
+tarball: https://download.schedmd.com/slurm/slurm-26.05.4.tar.bz2
+sha256: 035f4b193d4de979ba5381beca206a50b6b886b2793b06f68a1ce7e67022b06a
+size: 6883455 bytes
+git tag: slurm-26-05-4-1 (annotated, not PGP-signed; tagger Tim McMullan, 2026-09-02)
+git commit: 85014568d41355489419c92bd41b3d8c63849020 (https://github.com/SchedMD/slurm)
+checked: 2026-10-10 on admin.beamline. The download site publishes no checksum or
+  signature files, so the tarball was compared with the tagged tree instead: extracted
+  with Python's tarfile (filter="data", 2435 members, nothing refused) and
+  `diff -rq -x .git` against a depth-1 clone of the tag gave exit 0, every file
+  identical. Two independent channels (SchedMD's web server, GitHub) agree on every
+  file's content; there is no cryptographic signature.
+packaging: upstream debian/ (source slurm-smd, 26.05.4-1), used unchanged.
